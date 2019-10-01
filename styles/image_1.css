@@ -1,0 +1,53 @@
+.invisible {
+  opacity: 0;
+  height: 80px;
+  width: 80px; 
+}
+
+.circle {
+  position: absolute;
+  height: 80px;
+  width: 80px; 
+}
+
+.circle > img {
+  height: 100%;
+  width: 100%;
+}
+
+#butt1L {
+  position: absolute;
+  left: 0px;
+  top: 140px;
+  z-index: 10;
+}
+#butt1R {
+  position: absolute;
+  left: 500px;
+  top: 140px;
+  z-index: 10;
+}
+#butt2L {
+  position: absolute;
+  left: 32px;
+  top: 225px;
+  z-index: 10;
+}
+#butt2R {
+  position: absolute;
+  left: 530px;
+  top: 225px;
+  z-index: 10;
+}
+#butt3L {
+  position: absolute;
+  left: 275px;
+  top: 390px;
+  z-index: 10;
+}
+#butt3R {
+  position: absolute;
+  left: 760px;
+  top: 390px;
+  z-index: 10;
+}   
