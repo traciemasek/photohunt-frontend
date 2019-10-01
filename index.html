@@ -10,22 +10,55 @@
   <body>
     <div id="wrapper">
       <div id="top-container">
-        <div class="top-box" id="high-score">High Score</div>
+        <div class="top-box" id="high-score"><button data-action="start">Start! (But this should be high score)</button></div>
         <div class="top-box glow" id="logo">NAME OF OUR GAME</div>
-        <div class="top-box" id="user-score">User Score</div>
-        <div class="top-box" id="timer">TIMER HERE</div>
+        <div class="top-box" id="user-score">User Score:<span id="my-score">0</span></div>
+        <div class="top-box" id="timer">
+          <div class="timer-buttons">
+            <img class="grey-oval" id="oval20" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval19" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval18" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval17" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval16" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval15" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval14" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval13" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval12" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval11" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval10" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval9" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval8" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval7" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval6" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval5" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval4" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval3" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval2" src="assets/greyOval.png">
+            <img class="grey-oval" id="oval1" src="assets/greyOval.png">
+            <img class="clock" id="clock" src="assets/clock.png">
+          </div>
+        </div>
       </div>
-
-      <div id="photo-container">
-        <img src="https://image.apost.com/media/articletranslation/2017/09/19/14/ed4dfb369b7f2126633a078b92b03660_500x1.jpg">
-        <div id="butt1L" class="invisible"></div>
-        <div id="butt1R" class="invisible"></div>
-        <div id="butt2L" class="invisible"></div>
-        <div id="butt2R" class="invisible"></div>
-        <div id="butt3L" class="invisible"></div>
-        <div id="butt3R" class="invisible"></div>
-      </div> <!--closes photo-container--> 
-      <div class="footer" id="footer">FOOTER HERE</div>
+      <div id="board">
+        <!--move photo-container innerHTML to JS file upon newImage load-->
+        <div id="photo-container">
+          <img src="https://image.apost.com/media/articletranslation/2017/09/19/14/ed4dfb369b7f2126633a078b92b03660_500x1.jpg">
+          <div id="butt1L" class="invisible"></div>
+          <div id="butt1R" class="invisible"></div>
+          <div id="butt2L" class="invisible"></div>
+          <div id="butt2R" class="invisible"></div>
+          <div id="butt3L" class="invisible"></div>
+          <div id="butt3R" class="invisible"></div>
+        </div> <!--closes photo-container--> 
+      </div> <!--closes board--> 
+      <div class="footer" id="footer">
+          <img class="grey-circle" id="circle1" src="assets/greyCircle.png">
+          <img class="grey-circle" id="circle2" src="assets/greyCircle.png">
+          <img class="grey-circle" id="circle3" src="assets/greyCircle.png">
+          <img class="grey-circle" id="circle4" src="assets/greyCircle.png">
+          <img class="grey-circle" id="circle5" src="assets/greyCircle.png">
+          <img class="grey-circle" id="circle6" src="assets/greyCircle.png">
+      </div>
     </div> <!--closes wrapper--> 
     
   </body>

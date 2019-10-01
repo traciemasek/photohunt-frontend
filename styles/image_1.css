@@ -15,6 +15,17 @@
   width: 100%;
 }
 
+.gameOverCircle {
+  position: absolute;
+  height: 80px;
+  width: 80px; 
+}
+
+.gameOverCircle > img {
+  height: 100%;
+  width: 100%;
+}
+
 #butt1L {
   position: absolute;
   left: 0px;
