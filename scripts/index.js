@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", e => { 
 
-  let user;
+  let scenes = ["https://image.apost.com/media/articletranslation/2017/09/19/14/ed4dfb369b7f2126633a078b92b03660_500x1.jpg", "assets/scenes/2-cowboy.jpg", "assets/scenes/14-ramsay.jpg"];
+  // scenes will be an array of objects with the image file path and css file path (maybe)
+  let username;
   let highScore;
 
   const photoContainer = document.getElementById("photo-container");
@@ -12,7 +14,18 @@ document.addEventListener("DOMContentLoaded", e => {
   let sec = 40;
   let correctCount = 0;
 
+  const sceneHTML = `
+    <img src="${getRandomScene(scenes)}">
+    <div id="butt1L" class="invisible"></div>
+    <div id="butt1R" class="invisible"></div>
+    <div id="butt2L" class="invisible"></div>
+    <div id="butt2R" class="invisible"></div>
+    <div id="butt3L" class="invisible"></div>
+    <div id="butt3R" class="invisible"></div>
+  `
+
   //on page load functions here
+  kenny()
   newTimerButtons()
     //ask user to sign in or sign up
     //replace username button with start button 
@@ -40,6 +53,42 @@ document.addEventListener("DOMContentLoaded", e => {
       <img class="green oval" id="oval36" src="assets/greenOval.png">
       <img class="green oval" id="oval38" src="assets/greenOval.png">
     `)
+  } //end of newTimerButtons()
+
+  function kenny(){
+    const formHTML =  `
+    <form class="login">
+      Enter a username!
+      <input type="text" name="username" placeholder="Enter a username">
+      <input type="submit" value="Giddy up!">
+    </form>`
+    photoContainer.innerHTML = formHTML
+
+    photoContainer.addEventListener("submit", event => {
+      event.preventDefault()
+      if (event.target.tagName === "FORM") {
+        username = event.target.username.value
+        
+        photoContainer.innerHTML = `
+          <h1>Welcome to Name of Our Game, ${username}!</h1>
+          <p>You'll be shown two photos with 6 differences. Click on the differences before the time runs out. If you the wrong thing, you lose points. Don't be a loser!</p>
+          <button id="start">START</button>
+          `
+
+        const startButton = document.querySelector("#start")
+        startButton.addEventListener("click", event => {
+          //start game function
+          startGame()
+        })
+      }
+    })
+  } //end of loggins
+
+  function startGame() {
+    //load photo
+    photoContainer.innerHTML = sceneHTML
+    //start timer
+    //begin score keeping
   }
 
   //timer
@@ -120,7 +169,10 @@ document.addEventListener("DOMContentLoaded", e => {
     }
   })
 
-
+  //helper functions
+  function getRandomScene(scenes) {
+    return scenes[Math.floor(Math.random()*scenes.length)]
+  }
 
 
 

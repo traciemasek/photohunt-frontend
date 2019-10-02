@@ -84,6 +84,7 @@ body {
   position: relative;
   height: 500px;
   width: 996px;
+  color: greenyellow;
 }
 
 #photo-container > img {
