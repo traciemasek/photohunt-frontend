@@ -1,17 +1,22 @@
 document.addEventListener("DOMContentLoaded", e => { 
+  const APIURL = "http://localhost:3000/scores"
+  const APIHIGHSCORE = "http://localhost:3000/scores/high_score"
 
   const scenes = [
     {
-      scene: "https://image.apost.com/media/articletranslation/2017/09/19/14/ed4dfb369b7f2126633a078b92b03660_500x1.jpg",
-      css: "styles/image_1.css"
-    },
-    {
-      scene: "assets/scenes/14-ramsay.jpg",
+      scene: "assets/scenes/ramsay.jpg",
       css: "styles/ramsay.css"
     },
-    { scene: "assets/scenes/2-cowboy.jpg", 
+    { scene: "assets/scenes/cowboy.jpg", 
       css: "styles/cowboy.css"
-    }];  
+    },
+    { scene: "assets/scenes/fabio.jpg", 
+      css: "styles/fabio.css"
+    },
+    { scene: "assets/scenes/nixon.jpg", 
+      css: "styles/nixon.css"
+    }
+  ];  
 
   let usedIndexes = [];
 
@@ -20,6 +25,7 @@ document.addEventListener("DOMContentLoaded", e => {
   let sceneCssHref;
 
   let username;
+  let userscore = 0;
   let highScore;
 
   const photoContainer = document.getElementById("photo-container");
@@ -27,6 +33,7 @@ document.addEventListener("DOMContentLoaded", e => {
   const timerButton = topContainer.querySelector("button"); //this is the fake button to start the timer
   const footer = document.getElementById("footer");
   const timerBar = document.getElementById("timer-buttons")
+  let userScoreContainer = document.getElementById("my-score")
   // CSS HEAD STUFF
   const head = document.querySelector("head")
   const cssLink = head.querySelector("#circles")
@@ -36,7 +43,6 @@ document.addEventListener("DOMContentLoaded", e => {
   let correctCount = 0;
 
   //NOTES scope of sceneImgSrc issue with the randomScene stuff--removed the img tag and now loading it in startGame()
-  // <img src=${sceneImgSrc}>
   let sceneHTML = `
     <div id="butt1L" class="invisible"></div>
     <div id="butt1R" class="invisible"></div>
@@ -95,6 +101,15 @@ document.addEventListener("DOMContentLoaded", e => {
     `
   }
 
+  function resetScore() {
+    userscore = 0;
+    userScoreContainer.innerText = userscore;
+  }
+
+  function updateScore() {
+    userScoreContainer.innerText = userscore;
+  }
+
   function kenny(){
     const formHTML =  `
     <form class="login">
@@ -117,13 +132,14 @@ document.addEventListener("DOMContentLoaded", e => {
 
         const startButton = document.querySelector("#start")
         startButton.addEventListener("click", event => {
-          startGame()
+          resetScore();
+          startGame();
         })
       }
     })
   } //end of loggins
 
-  function startGame() {
+  function setScene() {
     //assign random scene info to variables
     randomScene = getRandomScene();
     sceneImgSrc = randomScene.scene;
@@ -131,28 +147,35 @@ document.addEventListener("DOMContentLoaded", e => {
     //set the HTML & CSS
     photoContainer.innerHTML = `<img src=${sceneImgSrc}> ${sceneHTML}`;
     cssLink.href = sceneCssHref; 
-    startTimer()
   }
 
+
+  function startGame() {
+    setScene();
+    startTimer();
+  }
+
+  //use this with play again button
   function restartGame() {
+    correctCount = 0;
     usedIndexes = [];
     newTimerButtons();
     newCorrectCircles();
-    randomScene = getRandomScene();
-    sceneImgSrc = randomScene.scene;
-    sceneCssHref = randomScene.css;
-    //set the HTML & CSS
-    photoContainer.innerHTML = `<img src=${sceneImgSrc}> ${sceneHTML}`;
-    cssLink.href = sceneCssHref; 
+    setScene();
+    resetScore();
     startTimer()
   }
 
   function nextRound() {
-    correctCount = 0
-    timerBar.innerHTML = ""
+    correctCount = 0;
     newTimerButtons();
     newCorrectCircles();
     startGame();
+  }
+
+  //use this to log out user & reload log in 
+  function exit() {
+    //reset DOM to page load conditions, log out user and scores
   }
 
   //timer
@@ -180,6 +203,8 @@ document.addEventListener("DOMContentLoaded", e => {
     sec = 40;
     timerBar.innerHTML = "<div>Time's up!!! GAME OVER</div>"
     //TO DO: post user score
+    postScore();
+    getHighScore();
     // add button to start new game or exit
     const invisibleDivs = photoContainer.querySelectorAll(".invisible")
     const greyCircles = footer.querySelectorAll(".grey-circle")
@@ -195,8 +220,6 @@ document.addEventListener("DOMContentLoaded", e => {
   
   //photo click
   photoContainer.addEventListener("click", e=>{
-    let score = parseInt(document.getElementById("my-score").innerText); 
-
     if (e.target.className === "invisible") {
       let targetId = e.target.id;
       let targetDiv = document.getElementById(targetId);
@@ -214,7 +237,8 @@ document.addEventListener("DOMContentLoaded", e => {
       correspondingDiv.className = "circle";
       targetDiv.innerHTML = `<img class="circle" src="assets/greencircle.png">`;
       correspondingDiv.innerHTML = `<img class="circle" src="assets/greencircle.png">`;
-      document.getElementById("my-score").innerText = score += 100
+      userscore += 100;
+      updateScore();
       //counter at bottom
       correctCount++;
       let currentCircle = document.getElementById(`circle${correctCount}`)
@@ -223,48 +247,45 @@ document.addEventListener("DOMContentLoaded", e => {
       
       //win the round
       if (correctCount === 6) {
-        //sleep
         clearInterval(timer);
-
-        //*************
-        //*************TO DO: 
-        //add if usedIndexes.length === scenes.length you win the whole game
-
-        timerBar.innerHTML = `<h1>Great job!</h1> <button id="new-round">Start new round</button>`
-        const newRoundButton = document.getElementById("new-round")
-        newRoundButton.addEventListener("click", event => {
-          //starting a new round needs to reset the correctCount, clear the timerBar & add back in the dots, reset the correct circles
-          //: reset the randomScene to one that hasn't been played yet (based on array of used indexes--probably a better way)
-          //load the new scene into photo container, update css link in head, start timer (these are all in the startGame function)
-
-          correctCount = 0
-          // timerBar.innerHTML = ""
-          newTimerButtons();
-          newCorrectCircles();
-          startGame();
-
-          // nextRound();
-        
+        let bonus = sec * 100;
+        userscore += bonus;
+        updateScore()
+    
+        if (usedIndexes.length === scenes.length) {
+          postScore();
+          getHighScore();
+          timerBar.innerHTML = `<h1>OMG YOU WON THE WHOLE GAME!</h1> <button id="play-again">Play Again?</button>`
+          const playAgainButton = document.getElementById("play-again")
+          playAgainButton.addEventListener("click", event => {
+          restartGame();
         })
-      }
+
+        } else {
+          timerBar.innerHTML = `<h1>Great job!</h1> <button id="new-round">Start new round</button>`
+          const newRoundButton = document.getElementById("new-round")
+          newRoundButton.addEventListener("click", event => {
+          nextRound();
+        }) //closes new round event listener
+        } //closes else
+      } //closes win the round 
 
     } else {
-      if (sec < 40 && sec > 0) {
-       document.getElementById("my-score").innerText = score -=50 
+      if (sec < 40 && sec > 0 && correctCount < 6) {
+        userscore -= 50;
+        updateScore();
       }
-    }
-  })
+    } //closes giant if statement that looks for the differences
+  }) //closes photo click
 
   //helper functions
   function getRandomScene() {
     let i = Math.floor(Math.random()*scenes.length)
     if (usedIndexes.includes(i)) {
       console.log("index was already in usedIndexes, trying to search again")
-      getRandomScene();
+      return getRandomScene();
     } else {
-    usedIndexes.push(i) 
-    console.log(scenes[i])
-    console.log(`used indexes = ${usedIndexes} and i = ${i}`)
+    usedIndexes.push(i); 
     return scenes[i]
     }
   }
@@ -273,9 +294,29 @@ document.addEventListener("DOMContentLoaded", e => {
   //FETCH functions
   
   //post userscore
-  // function postScore(body) {
-  //   return fetch()
-  // }
+  function postScore() {
+    let body = {
+      username: username,
+      userscore: userscore
+    }
+    return fetch(APIURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify(body)
+    }).then(resp => resp.json())
+  }
+
+  //get high score
+  function getHighScore() {
+    fetch(APIHIGHSCORE)
+    .then(resp => resp.json())
+    .then(score => {
+      console.log(score)
+    })
+  }
 
 
 

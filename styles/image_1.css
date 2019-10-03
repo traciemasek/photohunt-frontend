@@ -29,7 +29,7 @@
 } */
 
 /* ****RAMSAY***** */
-/* #butt1L {
+#butt1L {
   position: absolute;
   left: 125px;
   top: 50px;
@@ -100,7 +100,7 @@
   left: 670px;
   top: 320px;
   z-index: 10;
-}    */
+}   
 
 /* ****COWBOY*****
 #butt1L {
@@ -178,7 +178,7 @@
 
 
 /* *****SANGRIA PHOTO***** */
-#butt1L {
+/* #butt1L {
   position: absolute;
   left: 0px;
   top: 140px;
@@ -213,4 +213,4 @@
   left: 760px;
   top: 390px;
   z-index: 10;
-}   
+}    */
