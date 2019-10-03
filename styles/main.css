@@ -7,7 +7,8 @@ font-family: 'Paytone One', sans-serif;
 font-family: 'Fugaz One', cursive;
 font-family: 'Lilita One', cursive;
 font-family: 'Racing Sans One', cursive;
-font-family: 'Londrina Shadow', cursive; */
+font-family: 'Londrina Shadow', cursive; 
+font-family: 'Raleway', sans-serif;*/
 
 /* **********CLICK STYLING********** */
 
@@ -156,15 +157,18 @@ body {
   text-align: center;
 }
 
-#giddyup {
+form {
   text-align: center;
+  margin: 100px 0;
   padding: 0;
-  margin: 0;
 }
 
-#instructions {
+.instructions {
   text-align: center;
-  font-family: 'Paytone One', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  padding: 50px;
+  line-height: 1.6em;
+  font-size: 18px;
 }
 
 .footer {
@@ -182,6 +186,13 @@ body {
   margin-right: auto;
   height: 40px;
   width: 40px;
+}
+
+#chrome {text-align: center;}
+
+#chrome > img {
+  width: 266px;
+  height: 106px;
 }
 
 /* LOGO GLOW */
@@ -212,6 +223,7 @@ body {
   color: transparent;
 }
 
+
 /* .metal > span:nth-child(1) {
   z-index: 2;
 }
@@ -226,6 +238,7 @@ body {
 	position: relative;
   display: inline-block;
   width: auto;
+  margin: 15px 0;
 	padding: 15px 25px;
 	background-color: #999999; /*for compatibility with older browsers*/
   background-image: linear-gradient(rgb(43, 43, 43),rgb(172, 172, 172));
@@ -254,3 +267,51 @@ body {
 .glass:hover{
 	background: linear-gradient(rgb(24, 24, 24),rgb(201, 204, 203));
 }
+
+/* LOG IN */
+/* #namer {
+  position: relative;
+  max-width: 400px;
+  margin: 150px auto 0;
+ } */
+ 
+ #namer {
+  font-family: 'Permanent Marker', cursive;
+  border: 0;
+  border-bottom: 2px solid #1976D2;
+  width: 400px;
+  font-size: 50px;
+  line-height: 35px;
+  height: 70px;
+  text-align: center;
+  padding: 10px;
+  background: transparent;
+   color: #BBDEFB;
+ } 
+
+ ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+}
+
+ /* form div {
+  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
+ } */
+
+
+ /* #giddyup {
+  text-align: center;
+}  */

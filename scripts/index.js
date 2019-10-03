@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", e => {
   //on page load functions here
   kenny();
   newTimerButtons();
-  newCorrectCircles();
+ 
   getHighScore();
 
  
@@ -112,13 +112,18 @@ document.addEventListener("DOMContentLoaded", e => {
     userScoreContainer.innerText = userscore;
   }
 
+  // <h1 class="">Enter a username! </h1><br></br>
+  // <h2 class="instructions">Enter a username:</h2>
+  // id="giddyup" class="glass"
   function kenny(){
     const formHTML =  `
-    <form class="login ">
-      <h1 class="metal">Enter a username! </h1><br>
-      <input type="text" name="username" placeholder="Enter a username"> <br>
+   
+    <form>
+      <input id="namer" type="text" name="username" placeholder="Enter a username" autocomplete="off"> <br>
       <input type="submit" value="Giddy up!" id="giddyup" class="glass">
-    </form>`
+    </form>
+    <div id="chrome"> <img src="assets/chrome.png"></div>
+    `
     photoContainer.innerHTML = formHTML
 
     photoContainer.addEventListener("submit", event => {
@@ -127,20 +132,19 @@ document.addEventListener("DOMContentLoaded", e => {
         username = event.target.username.value
         
         photoContainer.innerHTML = `
-          <div id="instructions">
-          <h1>Welcome to MEGA CLICK PHOTO POKE, ${username}!</h1>
-          <p>MEGA CLICK PHOTO POKE is a spot the difference game. 
-          In each level, you'll be shown two photos—side-by-side—that are identical except for six differences. 
-          The objective is to find and identify the differences between the pictures before the timer runs out. 
-          Select potential differences by clicking on either picture in the location of difference. 
-          Correct choices encircle the difference in green and incorrect clicks deduct points.
-          The game ends if time expires on any level. 
-          
+          <div class="instructions" id="instructions">
+          <h1>Welcome to <br>
+          <br>
+          MEGA CLICK PHOTO POKE ${username}!</h1>
+          <p>MEGA CLICK PHOTO POKE is a spot the difference game. <br>
+          In each level, you'll be shown two photos that are identical except for six differences. <br>
+          The objective is to find and identify the differences between the pictures before the timer runs out. <br>
+          Select potential differences by clicking on either picture in the location of difference. <br>
+          Correct choices circle the difference in green and incorrect clicks deduct points.<br>
+          The game ends if time expires on any level. <br>
           Upon clearing a level, bonus points are awarded for the time remaining and the timer is refreshed for the next level.</p>
 
-  
-
-          <button id="start">START</button>
+          <button id="start" class="glass">START</button>
           </div>
           `
 
@@ -164,6 +168,7 @@ document.addEventListener("DOMContentLoaded", e => {
   }
 
   function startGame() {
+    newCorrectCircles();
     setScene();
     startTimer();
   }
