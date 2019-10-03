@@ -112,9 +112,7 @@ document.addEventListener("DOMContentLoaded", e => {
     userScoreContainer.innerText = userscore;
   }
 
-  // <h1 class="">Enter a username! </h1><br></br>
-  // <h2 class="instructions">Enter a username:</h2>
-  // id="giddyup" class="glass"
+ 
   function kenny(){
     const formHTML =  `
    
