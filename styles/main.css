@@ -3,6 +3,35 @@
 font-family: 'IBM Plex Sans', sans-serif;
 font-family: 'Bangers', cursive; */
 
+/* **********CLICK STYLING********** */
+
+.invisible {
+  opacity: 0;
+  height: 80px;
+  width: 80px; 
+}
+
+.circle {
+  position: absolute;
+  height: 80px;
+  width: 80px; 
+}
+
+.circle > img {
+  height: 100%;
+  width: 100%;
+}
+
+.gameOverCircle {
+  position: absolute;
+  height: 80px;
+  width: 80px; 
+}
+
+.gameOverCircle > img {
+  height: 100%;
+  width: 100%;
+}
 
 
 body {
@@ -11,7 +40,6 @@ body {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-
 }
 
 #wrapper {
@@ -59,6 +87,7 @@ body {
   box-shadow: 0px 0px 4px #4195fc;
   padding: 0 6px;
   text-align: center;
+  color: white;
 }
 
 .timer-buttons > img {
@@ -90,13 +119,9 @@ body {
 #photo-container > img {
   display: block;
   position: relative;
-  /* height: 500px;
-  width: 1000px; */
   height: 100%;
   width: 100%;
 } 
-
-
 
 .footer {
   position: relative;

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", e => { 
 
-  const scenes = [
+  let scenes = [
     {
       scene: "https://image.apost.com/media/articletranslation/2017/09/19/14/ed4dfb369b7f2126633a078b92b03660_500x1.jpg",
       css: "styles/image_1.css"
@@ -11,17 +11,8 @@ document.addEventListener("DOMContentLoaded", e => {
     },
     { scene: "assets/scenes/2-cowboy.jpg", 
       css: "styles/cowboy.css"
-    }];  
-
-
-  let usedIndexes = [];
-
-
-
-  let randomScene; 
-  let sceneImgSrc;
-  let sceneCssHref;
-
+    }];
+  // scenes will be an array of objects with the image file path and css file path (maybe)
   let username;
   let highScore;
 
@@ -30,17 +21,15 @@ document.addEventListener("DOMContentLoaded", e => {
   const timerButton = topContainer.querySelector("button"); //this is the fake button to start the timer
   const footer = document.getElementById("footer");
   const timerBar = document.getElementById("timer-buttons")
-  // CSS HEAD STUFF
+  // HEAD CSS STUFF
   const head = document.querySelector("head")
   const cssLink = head.querySelector("#circles")
 
   let sec;
-  let timer;
   let correctCount = 0;
 
-  //NOTES scope of sceneImgSrc issue with the randomScene stuff--removed the img tag and now loading it in startGame()
-  // <img src=${sceneImgSrc}>
-  let sceneHTML = `
+  const sceneHTML = `
+    <img src=${scenes[1].scene}>
     <div id="butt1L" class="invisible"></div>
     <div id="butt1R" class="invisible"></div>
     <div id="butt2L" class="invisible"></div>
@@ -54,16 +43,13 @@ document.addEventListener("DOMContentLoaded", e => {
     <div id="butt6L" class="invisible"></div>
     <div id="butt6R" class="invisible"></div>
   `
+  const cssHref = `${scenes[1].css}`
 
   //on page load functions here
-  kenny();
-  newTimerButtons();
-  newCorrectCircles();
-  console.log(scenes, randomScene, usedIndexes)
-
+  kenny()
+  newTimerButtons()
  
   function newTimerButtons() {
-    //might want to change this to innerHTML =
     timerBar.insertAdjacentHTML("afterbegin", `
       <img class="red oval" id="oval0" src="assets/redOval.png">
       <img class="red oval" id="oval2" src="assets/redOval.png">
@@ -88,60 +74,24 @@ document.addEventListener("DOMContentLoaded", e => {
     `)
   } //end of newTimerButtons()
 
-  function newCorrectCircles() {
-    footer.innerHTML = `
-    <img class="grey-circle" id="circle1" src="assets/greyCircle.png">
-    <img class="grey-circle" id="circle2" src="assets/greyCircle.png">
-    <img class="grey-circle" id="circle3" src="assets/greyCircle.png">
-    <img class="grey-circle" id="circle4" src="assets/greyCircle.png">
-    <img class="grey-circle" id="circle5" src="assets/greyCircle.png">
-    <img class="grey-circle" id="circle6" src="assets/greyCircle.png">
-    `
-  }
-
   function kenny(){
-    const formHTML =  `
-    <form class="login">
-      Enter a username!
-      <input type="text" name="username" placeholder="Enter a username">
-      <input type="submit" value="Giddy up!">
-    </form>`
-    photoContainer.innerHTML = formHTML
-
-    photoContainer.addEventListener("submit", event => {
-      event.preventDefault()
-      if (event.target.tagName === "FORM") {
-        username = event.target.username.value
-        
-        photoContainer.innerHTML = `
-          <h1>Welcome to Name of Our Game, ${username}!</h1>
-          <p>You'll be shown two photos with 6 differences. Click on the differences before the time runs out. If you the wrong thing, you lose points. Don't be a loser!</p>
-          <button id="start">START</button>
-          `
-
-        const startButton = document.querySelector("#start")
-        startButton.addEventListener("click", event => {
+    
           startGame()
-        })
-      }
-    })
+  
   } //end of loggins
 
   function startGame() {
-    //assign random scene info to variables
-    randomScene = getRandomScene();
-    sceneImgSrc = randomScene.scene;
-    sceneCssHref = randomScene.css;
-    //set the HTML & CSS
-    photoContainer.innerHTML = `<img src=${sceneImgSrc}> ${sceneHTML}`;
-    cssLink.href = sceneCssHref; 
-    startTimer()
+    photoContainer.innerHTML = sceneHTML
+    cssLink.href = cssHref
+    //start timer
+
+    //begin score keeping
   }
 
   //timer
-  function startTimer() {
+  function timer() {
     sec = 40;
-    timer = setInterval(() => {
+    let timer = setInterval(() => {
       sec --;
       timerButton.innerText = sec;
       let timerDots = timerBar.querySelectorAll(".oval")
@@ -154,7 +104,7 @@ document.addEventListener("DOMContentLoaded", e => {
       if (sec < 0) { 
         clearInterval(timer);
         timesUp();
-      } 
+      } //elsif to clear interval on timer if they win the round???
     }, 1000)
   }
 
@@ -177,7 +127,9 @@ document.addEventListener("DOMContentLoaded", e => {
   
   //photo click
   photoContainer.addEventListener("click", e=>{
-    let score = parseInt(document.getElementById("my-score").innerText); 
+
+    console.log(`X LEFT = ${e.clientX - 40}, Y TOP = ${e.clientY - 180}`)
+    // let score = parseInt(document.getElementById("my-score").innerText); 
 
     if (e.target.className === "invisible") {
       let targetId = e.target.id;
@@ -198,55 +150,34 @@ document.addEventListener("DOMContentLoaded", e => {
       correspondingDiv.innerHTML = `<img class="circle" src="assets/greencircle.png">`;
       document.getElementById("my-score").innerText = score += 100
       //counter at bottom
+      //add logic if they get all 6 before times up
       correctCount++;
       let currentCircle = document.getElementById(`circle${correctCount}`)
       currentCircle.src = "assets/greyCircleGreenCheck.png";
       currentCircle.className = "green-check"
       
-      //win the round
-      if (correctCount === 6) {
-        //sleep
-        clearInterval(timer);
+    //   if (correctCount === 6) {
+    //     //sleep
+    //     //clear interval
+    //     clearInterval(timer);
+    //     //reset timer to zero
+    //     sec = 0;
+    //     //alert user they won and button to start next round
+    //     timerBar.innerHTML = `<h1>Great job!</h1> <button>Start new round</button>`
+    //     //event listener on start new round and make start new round function (reset timer button, start timer, )
+    //   }
 
-        //*************
-        //*************TO DO: 
-        //add if usedIndexes.length === scenes.length you win the whole game
-
-        timerBar.innerHTML = `<h1>Great job!</h1> <button id="new-round">Start new round</button>`
-        const newRoundButton = document.getElementById("new-round")
-        newRoundButton.addEventListener("click", event => {
-          //starting a new round needs to reset the correctCount, clear the timerBar & add back in the dots, reset the correct circles
-          //: reset the randomScene to one that hasn't been played yet (based on array of used indexes--probably a better way)
-          //load the new scene into photo container, update css link in head, start timer (these are all in the startGame function)
-          correctCount = 0
-          timerBar.innerHTML = ""
-          newTimerButtons();
-          newCorrectCircles();
-        
-          startGame();
-        
-        })
-      }
-
-    } else {
-      if (sec < 40 && sec > 0) {
-       document.getElementById("my-score").innerText = score -=50 
-      }
+    // } else {
+    //   if (sec < 40 && sec > 0) {
+    //    document.getElementById("my-score").innerText = score -=50 
+    //   }
     }
   })
 
   //helper functions
-  function getRandomScene() {
-    let i = Math.floor(Math.random()*scenes.length)
-    if (usedIndexes.includes(i)) {
-      getRandomScene()
-    } else {
-    usedIndexes.push(i) 
-    console.log(`used indexes = ${usedIndexes} and i = ${i}`)
-    return scenes[i]
-    }
+  function getRandomScene(scenes) {
+    return scenes[Math.floor(Math.random()*scenes.length)]
   }
-
 
 
 

@@ -1,3 +1,5 @@
+/* **********CLICK STYLING**********
+
 .invisible {
   opacity: 0;
   height: 80px;
@@ -24,8 +26,158 @@
 .gameOverCircle > img {
   height: 100%;
   width: 100%;
-}
+} */
 
+/* ****RAMSAY***** */
+/* #butt1L {
+  position: absolute;
+  left: 125px;
+  top: 50px;
+  z-index: 10;
+}
+#butt1R {
+  position: absolute;
+  left: 625px;
+  top: 50px;
+  z-index: 10;
+}
+#butt2L {
+  position: absolute;
+  left: 320px;
+  top: 282px;
+  z-index: 10;
+}
+#butt2R {
+  position: absolute;
+  left: 820px;
+  top: 282px;
+  z-index: 10;
+}
+#butt3L {
+  position: absolute;
+  left: 220px;
+  top: 190px;
+  z-index: 10;
+}
+#butt3R {
+  position: absolute;
+  left: 720px;
+  top: 190px;
+  z-index: 10;
+}   
+#butt4L {
+  position: absolute;
+  left: 150px;
+  top: 390px;
+  z-index: 10;
+}
+#butt4R {
+  position: absolute;
+  left: 650px;
+  top: 390px;
+  z-index: 10;
+}
+#butt5L {
+  position: absolute;
+  left: 0px;
+  top: 385px;
+  z-index: 10;
+}
+#butt5R {
+  position: absolute;
+  left: 500px;
+  top: 385px;
+  z-index: 10;
+}
+#butt6L {
+  position: absolute;
+  left: 170px;
+  top: 320px;
+  z-index: 10;
+}
+#butt6R {
+  position: absolute;
+  left: 670px;
+  top: 320px;
+  z-index: 10;
+}    */
+
+/* ****COWBOY*****
+#butt1L {
+  position: absolute;
+  left: 0px;
+  top: -15px;
+  z-index: 10;
+}
+#butt1R {
+  position: absolute;
+  left: 500px;
+  top: -15px;
+  z-index: 10;
+}
+#butt2L {
+  position: absolute;
+  left: 40px;
+  top: 142px;
+  z-index: 10;
+}
+#butt2R {
+  position: absolute;
+  left: 540px;
+  top: 142px;
+  z-index: 10;
+}
+#butt3L {
+  position: absolute;
+  left: 235px;
+  top: 175px;
+  z-index: 10;
+}
+#butt3R {
+  position: absolute;
+  left: 735px;
+  top: 175px;
+  z-index: 10;
+}   
+#butt4L {
+  position: absolute;
+  left: 120px;
+  top: 350px;
+  z-index: 10;
+}
+#butt4R {
+  position: absolute;
+  left: 620px;
+  top: 350px;
+  z-index: 10;
+}
+#butt5L {
+  position: absolute;
+  left: 420px;
+  top: 385px;
+  z-index: 10;
+}
+#butt5R {
+  position: absolute;
+  left: 920px;
+  top: 385px;
+  z-index: 10;
+}
+#butt6L {
+  position: absolute;
+  left: 430px;
+  top: -20px;
+  z-index: 10;
+}
+#butt6R {
+  position: absolute;
+  left: 930px;
+  top: -20px;
+  z-index: 10;
+}    */
+
+
+/* *****SANGRIA PHOTO***** */
 #butt1L {
   position: absolute;
   left: 0px;
