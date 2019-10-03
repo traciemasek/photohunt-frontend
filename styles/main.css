@@ -72,11 +72,14 @@ body {
 
 #high-score {
   display: grid;
+  color: white;
+  text-align: center;
 }
 
 #user-score {
   display: grid;
   color: white;
+  text-align: center;
 }
 #logo {
   display: grid;
@@ -147,16 +150,21 @@ body {
 /* ****LOG IN FORM & BUTTON ***** */
 .login {
   color: white;
-  padding: 50px;
-  font-size: 65px;
-  font-family: 'Bangers', cursive; 
+  padding: 0px;
+  font-size: 40px;
+  font-family: 'Paytone One', sans-serif;
   text-align: center;
 }
 
 #giddyup {
-  background-color: greenyellow;
-  /* height: 30px; */
-  /* width: 100px; */
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+#instructions {
+  text-align: center;
+  font-family: 'Paytone One', sans-serif;
 }
 
 .footer {

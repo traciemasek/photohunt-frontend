@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", e => {
   const photoContainer = document.getElementById("photo-container");
   const topContainer = document.getElementById("top-container");
   const timerButton = topContainer.querySelector("button"); //this is the fake button to start the timer
+  const highScoreContainer = document.getElementById("high-score")
   const footer = document.getElementById("footer");
   const timerBar = document.getElementById("timer-buttons")
   let userScoreContainer = document.getElementById("my-score")
@@ -62,6 +63,7 @@ document.addEventListener("DOMContentLoaded", e => {
   kenny();
   newTimerButtons();
   newCorrectCircles();
+  getHighScore();
 
  
   function newTimerButtons() {
@@ -112,8 +114,8 @@ document.addEventListener("DOMContentLoaded", e => {
 
   function kenny(){
     const formHTML =  `
-    <form class="login">
-      Enter a username! <br>
+    <form class="login ">
+      <h1 class="metal">Enter a username! </h1><br>
       <input type="text" name="username" placeholder="Enter a username"> <br>
       <input type="submit" value="Giddy up!" id="giddyup" class="glass">
     </form>`
@@ -125,9 +127,21 @@ document.addEventListener("DOMContentLoaded", e => {
         username = event.target.username.value
         
         photoContainer.innerHTML = `
-          <h1>Welcome to Name of Our Game, ${username}!</h1>
-          <p>You'll be shown two photos with 6 differences. Click on the differences before the time runs out. If you click the wrong thing, you lose points. Don't be a loser!</p>
+          <div id="instructions">
+          <h1>Welcome to MEGA CLICK PHOTO POKE, ${username}!</h1>
+          <p>MEGA CLICK PHOTO POKE is a spot the difference game. 
+          In each level, you'll be shown two photos—side-by-side—that are identical except for six differences. 
+          The objective is to find and identify the differences between the pictures before the timer runs out. 
+          Select potential differences by clicking on either picture in the location of difference. 
+          Correct choices encircle the difference in green and incorrect clicks deduct points.
+          The game ends if time expires on any level. 
+          
+          Upon clearing a level, bonus points are awarded for the time remaining and the timer is refreshed for the next level.</p>
+
+  
+
           <button id="start">START</button>
+          </div>
           `
 
         const startButton = document.querySelector("#start")
@@ -148,7 +162,6 @@ document.addEventListener("DOMContentLoaded", e => {
     photoContainer.innerHTML = `<img src=${sceneImgSrc}> ${sceneHTML}`;
     cssLink.href = sceneCssHref; 
   }
-
 
   function startGame() {
     setScene();
@@ -183,7 +196,6 @@ document.addEventListener("DOMContentLoaded", e => {
     sec = 40;
     timer = setInterval(() => {
       sec --;
-      timerButton.innerText = sec;
       let timerDots = timerBar.querySelectorAll(".oval")
       timerDots.forEach(dot => {
         if (dot.id === `oval${sec}`) {
@@ -201,8 +213,11 @@ document.addEventListener("DOMContentLoaded", e => {
   function timesUp() {
     clearInterval(timer);
     sec = 40;
-    timerBar.innerHTML = "<div>Time's up!!! GAME OVER</div>"
-    //TO DO: post user score
+    timerBar.innerHTML = `<div>Time's up!!! GAME OVER</div><button id="play-again">Play Again?</button>`
+    const playAgainButton = document.getElementById("play-again")
+    playAgainButton.addEventListener("click", event => {
+    restartGame();
+  })
     postScore();
     getHighScore();
     // add button to start new game or exit
@@ -253,6 +268,7 @@ document.addEventListener("DOMContentLoaded", e => {
         updateScore()
     
         if (usedIndexes.length === scenes.length) {
+          userscore +=10000;
           postScore();
           getHighScore();
           timerBar.innerHTML = `<h1>OMG YOU WON THE WHOLE GAME!</h1> <button id="play-again">Play Again?</button>`
@@ -290,6 +306,12 @@ document.addEventListener("DOMContentLoaded", e => {
     }
   }
 
+  function renderHighScore(name, score) {
+    highScoreContainer.innerHTML = `
+    <span>${name}:</span>
+    <span>${score}</span>`
+  }
+
 
   //FETCH functions
   
@@ -314,7 +336,9 @@ document.addEventListener("DOMContentLoaded", e => {
     fetch(APIHIGHSCORE)
     .then(resp => resp.json())
     .then(score => {
-      console.log(score)
+      let highScoreName = score.username;
+      highScore = score.userscore;
+      renderHighScore(highScoreName, highScore)
     })
   }
 
