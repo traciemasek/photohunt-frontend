@@ -13,10 +13,7 @@ document.addEventListener("DOMContentLoaded", e => {
       css: "styles/cowboy.css"
     }];  
 
-
   let usedIndexes = [];
-
-
 
   let randomScene; 
   let sceneImgSrc;
@@ -59,12 +56,10 @@ document.addEventListener("DOMContentLoaded", e => {
   kenny();
   newTimerButtons();
   newCorrectCircles();
-  console.log(scenes, randomScene, usedIndexes)
 
  
   function newTimerButtons() {
-    //might want to change this to innerHTML =
-    timerBar.insertAdjacentHTML("afterbegin", `
+    timerBar.innerHTML = `
       <img class="red oval" id="oval0" src="assets/redOval.png">
       <img class="red oval" id="oval2" src="assets/redOval.png">
       <img class="red oval" id="oval4" src="assets/redOval.png">
@@ -85,7 +80,8 @@ document.addEventListener("DOMContentLoaded", e => {
       <img class="green oval" id="oval34" src="assets/greenOval.png">
       <img class="green oval" id="oval36" src="assets/greenOval.png">
       <img class="green oval" id="oval38" src="assets/greenOval.png">
-    `)
+      <img class="clock" id="clock" src="assets/clock.png">
+    `
   } //end of newTimerButtons()
 
   function newCorrectCircles() {
@@ -102,9 +98,9 @@ document.addEventListener("DOMContentLoaded", e => {
   function kenny(){
     const formHTML =  `
     <form class="login">
-      Enter a username!
-      <input type="text" name="username" placeholder="Enter a username">
-      <input type="submit" value="Giddy up!">
+      Enter a username! <br>
+      <input type="text" name="username" placeholder="Enter a username"> <br>
+      <input type="submit" value="Giddy up!" id="giddyup" class="glass">
     </form>`
     photoContainer.innerHTML = formHTML
 
@@ -115,7 +111,7 @@ document.addEventListener("DOMContentLoaded", e => {
         
         photoContainer.innerHTML = `
           <h1>Welcome to Name of Our Game, ${username}!</h1>
-          <p>You'll be shown two photos with 6 differences. Click on the differences before the time runs out. If you the wrong thing, you lose points. Don't be a loser!</p>
+          <p>You'll be shown two photos with 6 differences. Click on the differences before the time runs out. If you click the wrong thing, you lose points. Don't be a loser!</p>
           <button id="start">START</button>
           `
 
@@ -136,6 +132,27 @@ document.addEventListener("DOMContentLoaded", e => {
     photoContainer.innerHTML = `<img src=${sceneImgSrc}> ${sceneHTML}`;
     cssLink.href = sceneCssHref; 
     startTimer()
+  }
+
+  function restartGame() {
+    usedIndexes = [];
+    newTimerButtons();
+    newCorrectCircles();
+    randomScene = getRandomScene();
+    sceneImgSrc = randomScene.scene;
+    sceneCssHref = randomScene.css;
+    //set the HTML & CSS
+    photoContainer.innerHTML = `<img src=${sceneImgSrc}> ${sceneHTML}`;
+    cssLink.href = sceneCssHref; 
+    startTimer()
+  }
+
+  function nextRound() {
+    correctCount = 0
+    timerBar.innerHTML = ""
+    newTimerButtons();
+    newCorrectCircles();
+    startGame();
   }
 
   //timer
@@ -162,6 +179,7 @@ document.addEventListener("DOMContentLoaded", e => {
     clearInterval(timer);
     sec = 40;
     timerBar.innerHTML = "<div>Time's up!!! GAME OVER</div>"
+    //TO DO: post user score
     // add button to start new game or exit
     const invisibleDivs = photoContainer.querySelectorAll(".invisible")
     const greyCircles = footer.querySelectorAll(".grey-circle")
@@ -218,12 +236,14 @@ document.addEventListener("DOMContentLoaded", e => {
           //starting a new round needs to reset the correctCount, clear the timerBar & add back in the dots, reset the correct circles
           //: reset the randomScene to one that hasn't been played yet (based on array of used indexes--probably a better way)
           //load the new scene into photo container, update css link in head, start timer (these are all in the startGame function)
+
           correctCount = 0
-          timerBar.innerHTML = ""
+          // timerBar.innerHTML = ""
           newTimerButtons();
           newCorrectCircles();
-        
           startGame();
+
+          // nextRound();
         
         })
       }
@@ -239,16 +259,23 @@ document.addEventListener("DOMContentLoaded", e => {
   function getRandomScene() {
     let i = Math.floor(Math.random()*scenes.length)
     if (usedIndexes.includes(i)) {
-      getRandomScene()
+      console.log("index was already in usedIndexes, trying to search again")
+      getRandomScene();
     } else {
     usedIndexes.push(i) 
+    console.log(scenes[i])
     console.log(`used indexes = ${usedIndexes} and i = ${i}`)
     return scenes[i]
     }
   }
 
 
-
+  //FETCH functions
+  
+  //post userscore
+  // function postScore(body) {
+  //   return fetch()
+  // }
 
 
 
