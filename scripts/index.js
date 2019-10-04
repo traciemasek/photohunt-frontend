@@ -16,12 +16,25 @@ document.addEventListener("DOMContentLoaded", e => {
     { scene: "assets/scenes/nixon.jpg", 
       css: "styles/nixon.css"
     }, 
-    // { scene: "assets/scenes/school.jpg", 
-    //   css: "styles/school.css"
-    // }, 
-    // { scene: "assets/scenes/uber.jpg", 
-    //   css: "styles/uber.css"
-    // }, 
+    { scene: "assets/scenes/school.jpg", 
+      css: "styles/school.css"
+    }, 
+    { scene: "assets/scenes/uber.jpg", 
+      css: "styles/uber.css"
+    }, 
+    { scene: "assets/scenes/astrodad.jpg", 
+      css: "styles/astrodad.css"
+    }, 
+    { scene: "assets/scenes/beemovie.jpg", 
+      css: "styles/beemovie.css"
+    }, 
+    { scene: "assets/scenes/yikes.jpg", 
+      css: "styles/yikes.css"
+    }, 
+    { scene: "assets/scenes/vapormatt.jpg", 
+      css: "styles/vapormatt.css"
+    }
+    
   ];  
 
   let usedIndexes = [];
