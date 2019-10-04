@@ -1,0 +1,72 @@
+#butt1L {
+  position: absolute;
+  left: 50px;
+  top: 110px;
+  z-index: 10;
+}
+#butt1R {
+  position: absolute;
+  left: 550px;
+  top: 110px;
+  z-index: 10;
+}
+#butt2L {
+  position: absolute;
+  left: 245px;
+  top: 165px;
+  z-index: 10;
+}
+#butt2R {
+  position: absolute;
+  left: 745px;
+  top: 165px;
+  z-index: 10;
+}
+#butt3L {
+  position: absolute;
+  left: 320px;
+  top: 100px;
+  z-index: 10;
+}
+#butt3R {
+  position: absolute;
+  left: 820px;
+  top: 100px;
+  z-index: 10;
+}   
+#butt4L {
+  position: absolute;
+  left: 50px;
+  top: 425px;
+  z-index: 10;
+}
+#butt4R {
+  position: absolute;
+  left: 550px;
+  top: 425px;
+  z-index: 10;
+}
+#butt5L {
+  position: absolute;
+  left: 260px;
+  top: 75px;
+  z-index: 10;
+}
+#butt5R {
+  position: absolute;
+  left: 760px;
+  top: 75px;
+  z-index: 10;
+}
+#butt6L {
+  position: absolute;
+  left: 180px;
+  top: 35px;
+  z-index: 10;
+}
+#butt6R {
+  position: absolute;
+  left: 680px;
+  top: 35px;
+  z-index: 10;
+}   

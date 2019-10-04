@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", e => {
   let correctCount = 0;
 
   const sceneHTML = `
-    <img src="assets/scenes/nixon.jpg">
+    <img src="assets/scenes/uber.jpg">
     <div id="butt1L" class="invisible"></div>
     <div id="butt1R" class="invisible"></div>
     <div id="butt2L" class="invisible"></div>
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", e => {
     <div id="butt6L" class="invisible"></div>
     <div id="butt6R" class="invisible"></div>
   `
-  const cssHref = `styles/fabio.css`
+  const cssHref = `styles/uber.css`
 
   //on page load functions here
   kenny()

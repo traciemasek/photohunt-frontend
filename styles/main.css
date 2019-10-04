@@ -52,7 +52,7 @@ body {
 #wrapper {
   background-color: black;
   border: 2px solid #4195fc;
-  border-radius: 4px;
+  border-radius: 25px;
   box-shadow: 0px 0px 4px #4195fc;
   display: block;
   height: 800px;

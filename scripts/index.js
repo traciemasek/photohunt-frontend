@@ -15,7 +15,13 @@ document.addEventListener("DOMContentLoaded", e => {
     },
     { scene: "assets/scenes/nixon.jpg", 
       css: "styles/nixon.css"
-    }
+    }, 
+    // { scene: "assets/scenes/school.jpg", 
+    //   css: "styles/school.css"
+    // }, 
+    // { scene: "assets/scenes/uber.jpg", 
+    //   css: "styles/uber.css"
+    // }, 
   ];  
 
   let usedIndexes = [];
@@ -136,13 +142,13 @@ document.addEventListener("DOMContentLoaded", e => {
           MEGA CLICK PHOTO POKE ${username}!</h1>
           <p>MEGA CLICK PHOTO POKE is a spot the difference game. <br>
           In each level, you'll be shown two photos that are identical except for six differences. <br>
-          The objective is to find and identify the differences between the pictures before the timer runs out. <br>
+          The objective is to find and identify the differences between the pictures before the timer runs out. <br><br>
           Select potential differences by clicking on either picture in the location of difference. <br>
           Correct choices circle the difference in green and incorrect clicks deduct points.<br>
-          The game ends if time expires on any level. <br>
-          Upon clearing a level, bonus points are awarded for the time remaining and the timer is refreshed for the next level.</p>
+          Upon clearing a level, bonus points are awarded for the time remaining and the timer is refreshed for the next level. <br>
+          The game ends if time expires on any level. </p>
 
-          <button id="start" class="glass">START</button>
+          <button id="start" class="glass">LET'S GO</button>
           </div>
           `
 
@@ -251,7 +257,7 @@ document.addEventListener("DOMContentLoaded", e => {
         correspondingDiv = document.getElementById(correspendingId)
       }
       //update class & add image of circle
-      targetDiv.className = "cicle";
+      targetDiv.className = "circle";
       correspondingDiv.className = "circle";
       targetDiv.innerHTML = `<img class="circle" src="assets/greencircle.png">`;
       correspondingDiv.innerHTML = `<img class="circle" src="assets/greencircle.png">`;
