@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", e => { 
-  const APIURL = "http://localhost:3000/scores"
-  const APIHIGHSCORE = "http://localhost:3000/scores/high_score"
+  const APIURL = "http://localhost:3001/scores"
+  const APIHIGHSCORE = "http://localhost:3001/scores/high_score"
 
   const scenes = [
     {
@@ -49,7 +49,6 @@ document.addEventListener("DOMContentLoaded", e => {
 
   const photoContainer = document.getElementById("photo-container");
   const topContainer = document.getElementById("top-container");
-  const timerButton = topContainer.querySelector("button"); //this is the fake button to start the timer
   const highScoreContainer = document.getElementById("high-score")
   const footer = document.getElementById("footer");
   const timerBar = document.getElementById("timer-buttons")
@@ -62,7 +61,6 @@ document.addEventListener("DOMContentLoaded", e => {
   let timer;
   let correctCount = 0;
 
-  //NOTES scope of sceneImgSrc issue with the randomScene stuff--removed the img tag and now loading it in startGame()
   let sceneHTML = `
     <div id="butt1L" class="invisible"></div>
     <div id="butt1R" class="invisible"></div>
@@ -81,7 +79,6 @@ document.addEventListener("DOMContentLoaded", e => {
   //on page load functions here
   kenny();
   newTimerButtons();
- 
   getHighScore();
 
  
