@@ -33,6 +33,7 @@ Game play instructions:
 ![instructions](https://live.staticflickr.com/65535/49124272557_5699b3591d_z.jpg)
 
 Middle of a round. The timer counts down by turning the ovals to grey based on an interval
+
 ![game play](https://live.staticflickr.com/65535/49123588813_36a5811cff_z.jpg) 
 
 Game over! Any differences that the player missed will be circled in red once the timer runs out.
