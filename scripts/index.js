@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", e => { 
-  const APIURL = "http://localhost:3001/scores"
-  const APIHIGHSCORE = "http://localhost:3001/scores/high_score"
+  const APIURL = "https://powerful-retreat-26271.herokuapp.com/scores"
+  const APIHIGHSCORE = "https://powerful-retreat-26271.herokuapp.com/scores/high_score"
+  // const APIURL = "http://localhost:3001/scores"
+  // const APIHIGHSCORE = "http://localhost:3001/scores/high_score"
 
   const scenes = [
     {
