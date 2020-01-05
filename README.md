@@ -8,7 +8,8 @@ Mega Click Photo Poke is a spot the difference game inspired by the beloved Mega
 
 ### [Try it out! 👉🌃](https://traciemasek.github.io/photohunt-frontend/)
 
-![](https://live.staticflickr.com/65535/49123588813_36a5811cff_z.jpg)
+[![](https://live.staticflickr.com/65535/49123588813_36a5811cff_z.jpg)
+](https://traciemasek.github.io/photohunt-frontend/)
 
 ## Technology Used
 
