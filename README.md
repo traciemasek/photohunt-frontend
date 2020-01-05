@@ -6,6 +6,8 @@ _Developed by [Tracie Masek](https://github.com/traciemasek/) and [Rutger McKenn
 
 Mega Click Photo Poke is a spot the difference game inspired by the beloved Megatouch game system's [Photo Hunt](https://www.youtube.com/watch?v=gUXffFcd9UU). Rather than simply mourn the loss of classic touchscreen video games at our local bars and taverns, we created our own homage to this classic game. Players are shown two photos that are identical except for six differences. The objective is to find and click the differences between the pictures before the timer runs out.
 
+### [Try it out! 👉🌃](https://traciemasek.github.io/photohunt-frontend/)
+
 ![](https://live.staticflickr.com/65535/49123588813_36a5811cff_z.jpg)
 
 ## Technology Used
