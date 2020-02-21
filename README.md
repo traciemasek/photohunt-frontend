@@ -27,6 +27,8 @@ Next, clone this repo and open the `index.html` file in your browser and follow 
 
 ## Game Preview
 
+[Watch a demo video of the game](https://youtu.be/awJ17lTEBJQ)
+
 The landing page and log in screen. The "Best viewed in Chrome" button is a cheeky callback to the [first browser wars](https://medium.com/@traciemasek/a-brief-history-of-the-original-browsers-and-the-first-browser-war-7823fdf756fe) that caused JavaScript to be developed in the first place.
 
 ![log in landing page](https://live.staticflickr.com/65535/49123588903_b5442c65a0_z.jpg)
